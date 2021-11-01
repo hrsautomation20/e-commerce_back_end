@@ -8,7 +8,6 @@ router.get("/", (req, res) => {
   // find all products
   // be sure to include its associated Category and Tag data
   Product.findAll({
-    attributes: ["id", "product_name", "price", "stock"],
     include: [
       {
         model: Category,
@@ -21,9 +20,9 @@ router.get("/", (req, res) => {
     ],
   })
     .then((productData) => res.json(productData))
-    .catch((error) => {
-      console.log(error);
-      res.status(500).json(error);
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
     });
 });
 
@@ -35,7 +34,6 @@ router.get("/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
-    attributes: ["id", "product_name", "price", "stock"],
     include: [
       {
         model: Category,
@@ -54,9 +52,9 @@ router.get("/:id", (req, res) => {
       }
       res.json(productData);
     })
-    .catch((error) => {
-      console.log(error);
-      res.status(500).json(error);
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
     });
 });
 
@@ -70,13 +68,7 @@ router.post("/", (req, res) => {
       tagIds: [1, 2, 3, 4]
     }
   */
-  Product.create({
-    product_name: req.body.product_name,
-    price: req.body.price,
-    stock: req.body.stock,
-    category_id: req.body.category_id,
-    tagIds: req.body.tagIds,
-  })
+  Product.create(req.body)
     .then((product) => {
       // if there's product tags, we need to create pairings to bulk create in the ProductTag model
       if (req.body.tagIds.length) {
@@ -149,14 +141,14 @@ router.delete("/:id", (req, res) => {
   })
     .then((productData) => {
       if (!productData) {
-        res.status(404).json({ message: `No Product found with this ID` });
+        res.status(404).json({ message: "No Product found with that ID." });
         return;
       }
       res.json(productData);
     })
-    .catch((error) => {
-      console.log(error);
-      res.status(500).json(error);
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
     });
 });
 

@@ -31,7 +31,13 @@ router.get("/:id", (req, res) => {
       attributes: ["product_name", "price", "stock", "category_id"],
     },
   })
-    .then((tagData) => res.json(tagData))
+    .then((tagData) => {
+      if (!tagData) {
+        res.status(404).json({ message: `No Tag found with this ID` });
+        return;
+      }
+      res.json(tagData);
+    })
     .catch((error) => {
       console.log(error);
       res.status(500).json(error);
@@ -41,9 +47,15 @@ router.get("/:id", (req, res) => {
 router.post("/", (req, res) => {
   // create a new tag
   Tag.create({
-    tag_name: req.params.tag_name,
+    tag_name: req.body.tag_name,
   })
-    .then((tagData) => res.json(tagData))
+    .then((tagData) => {
+      if (tagData) {
+        res.status(200).json({ message: `Successfully Created Tag Name!!!` });
+        return;
+      }
+      res.json(tagData);
+    })
     .catch((error) => {
       console.log(error);
       res.status(500).json(error);

@@ -55,7 +55,13 @@ router.post("/", (req, res) => {
   Category.create({
     category_name: req.body.category_name,
   })
-    .then((categoryData) => res.json(categoryData))
+    .then((categoryData) => {
+      if (categoryData) {
+        res.status(200).json({ message: `Successfully Created Category!!` });
+        return;
+      }
+      res.json(categoryData);
+    })
     .catch((error) => {
       console.log(error);
       res.status(500).json(error);
