@@ -65,7 +65,7 @@ This app is terminal based. Hence, there is no front end available. In order to 
 
 ### Video Tutorial
 
-[Video Walkthrough](https://drive.google.com/file/d/17IVTpHL6rat6VUpuQaznSoWe9_LJkn0e/view?usp=sharing)
+[Video Walkthrough](https://drive.google.com/file/d/1y_e8YTegKdUf5IqtBHfXU3mB5PO7spWu/view?usp=sharing)
 
 
 
