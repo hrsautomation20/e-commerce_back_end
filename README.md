@@ -74,8 +74,7 @@ This app is terminal based. Hence, there is no front end available. In order to 
 ![Insomnia](./public/images/insomnia-api.PNG "insomnia_api")
 
 ### Download Insomnia API 
-Download the .json file and import into your Insomnia environment for quick and easy CURD operations
-[Insomnia API Download](./public/insomnia_api.json)
+Download the .json file and import into your Insomnia environment for quick and easy CURD operations <a href="./public/insomnia_api.json">Insomnia API</a>
 
 <a name="command"></a>
 
